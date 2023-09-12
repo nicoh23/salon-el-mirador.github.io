@@ -52,7 +52,7 @@ export function Home() {
         </div>
 
         <div>
-          <button className="btn btn-outline-primary" handleLogout={handleLogout} onClick={handleLogout}>Logout</button>
+          <button className="btn btn-outline-primary" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
     </div>

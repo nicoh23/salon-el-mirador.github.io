@@ -22,16 +22,11 @@ function Reservas() {
     const [listadoMesas, setListadoMesas] = useState(mesas)
 
     const marcarReserva = (id) => {
-        if (!fecha || !horario) {
-            return alert('Primero debes seleccionar una fecha y un horario!')
-        }
-        if (listadoMesas[id - 1].reservada == false) {
-            return alert(`La ${listadoMesas[id - 1].name} ya se encuentra reservada`)
-        }
+        if (!fecha || !horario) return alert('Primero debes seleccionar una fecha y un horario!')
+        if (listadoMesas[id - 1].reservada == false) return alert(`La ${listadoMesas[id - 1].name} ya se encuentra reservada`)
 
         const res = confirm('Esta seguro de que quiere reservar esta mesa?')
         if (res) {
-            const nuevaReserva = listadoMesas.filter(item => item.id == id)
             setListadoMesas(listadoMesas.map(item => item.id == id && item.reservada == true
                 ? { ...item, fecha: fecha, horario: horario, reservada: !item.reservada }
                 : item))
@@ -46,7 +41,7 @@ function Reservas() {
 
         setFecha('')
         setHorario('')
-        alert(`Reserva Realizada para el dia ${fecha} a las ${horario} en la ${listadoMesas[mesaEnRegistro].name}. Te esperamos en El Mirador Salon de Te!`)
+        alert(`Listo! Reserva Realizada para el dia ${fecha} a las ${horario} en la ${listadoMesas[mesaEnRegistro].name}. Te esperamos en El Mirador Salon de Te!`)
         console.log('LISTADO DE MESAS: \n', listadoMesas)
         console.log('MESA REGISTRADA', listadoMesas[mesaEnRegistro])
         // ********************************************************************
